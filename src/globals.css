@@ -1,0 +1,322 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 248, 249, 250;
+  --accent: #007bff;
+  --background: #f8f9fa;
+  --text: #000000;
+  --card: #ffffff;
+  --secondary: #6c757d;
+  --darkblue: #0c3655;
+  --skyblue: #1A8DE1;
+  --border: #8d8e8e;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Layout */
+.main-container {
+  background: var(--background);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Header */
+.header {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--background);
+}
+
+.hero-title {
+  color: var(--accent);
+  line-height: 1.8;
+}
+
+/* Metrics Section */
+.metrics-box {
+  background: var(--darkblue);
+  border: 2px solid black;
+}
+
+.metrics-text {
+  color: #66DDC7;
+}
+
+.metrics-value {
+  color: white;
+}
+
+/* Brand Logos Section */
+.brand-logos-section {
+  background: var(--background);
+}
+
+.brand-logo {
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+/* Testimonials Section */
+.testimonial-card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-avatar {
+  border: 2px solid var(--accent);
+}
+
+/* Features Section */
+.feature-card {
+  background: var(--background);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.feature-number {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Growth Section */
+.growth-section {
+  background: var(--background);
+}
+
+/* Metrics Cards */
+.metric-card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.metric-value {
+  color: var(--accent);
+}
+
+/* Footer */
+.footer {
+  background: var(--background);
+}
+
+.footer-link {
+  color: var(--text);
+  opacity: 0.9;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.primary-button {
+  background: var(--accent);
+  color: var(--background);
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button:hover {
+  background: #0056b3;
+}
+
+.secondary-button {
+  color: var(--accent);
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.secondary-button:hover {
+  background: var(--background);
+}
+
+/* Utility Classes */
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-darkblue {
+  background: var(--darkblue);
+}
+
+.text-teal {
+  color: #66DDC7;
+}
+
+.bg-teal {
+  background: #66DDC7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.875rem;
+  }
+  
+  .metrics-box {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .testimonial-card {
+    flex-direction: column;
+  }
+  
+  .testimonial-avatar {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 248, 249, 250;
+  --accent: #007bff;
+  --background: #f8f9fa;
+  --text: #000000;
+  --card: #ffffff;
+  --secondary: #6c757d;
+  --darkblue: #0c3655;
+  --skyblue: #1A8DE1;
+  --border: #8d8e8e;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Layout */
+.main-container {
+  background: var(--background);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 2rem;
+  width: 2rem;
+}
+
+.header-logo span {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.header-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.header-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.header-link:hover {
+  color: var(--accent);
+}
+
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-login {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-login {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .header-login:hover {
+    background: var(--background);
+  }
+}
+
+.header-signup {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background: var(--accent);
+}
+
+.header-signup:hover {
+  background: #0056b3;
+}
+
+/* Rest of the existing styles... */
