@@ -14,15 +14,14 @@ const COLORS = {
 const Header = () => {
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
-      style={{ background: COLORS.background }}
+      className="fixed top-0 left-0 right-0 z-50 shadow-md bg-blue-200"
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <img
-              src="https://ext.same-assets.com/1796335204/3966176097.png"
+              src="/logo.webp"
               alt="GoMarble Logo"
               className="h-10 w-10 mr-3"
             />
