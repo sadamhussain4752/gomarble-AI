@@ -1,4 +1,4 @@
-// File: C:\Users\polis\OneDrive\Documents\GitHub\gomarble-AI\app\page.tsx
+// File: C:\Users\Sreenivasa\Documents\GitHub\gomarble-AI\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

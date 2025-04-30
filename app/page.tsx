@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import Header from "../components/Header";
 
@@ -81,19 +79,54 @@ const features = [
   },
 ];
 
-export default function Home() {
+// Placeholder component for platform icons used in the new section
+const PlatformIcon: React.FC<{ platform: string }> = ({ platform }) => (
+  <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
+    {platform}
+  </div>
+);
+
+// Placeholder component for channel icons used in the new section
+const ChannelIcon: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-gray-200">
+    <img src={src} alt={alt} className="w-6 h-6 object-contain" />
+  </div>
+);
+
+// Placeholder component for the phone icon
+const PhoneIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-6 w-6 inline ml-2"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+    />
+  </svg>
+);
+
+export default function App() {
   return (
-    <div className="main-container" aria-label="GoMarble.ai Homepage">
+    <div
+      className="min-h-screen text-black bg-sky-200"
+      aria-label="GoMarble.ai Homepage"
+    >
       <Header />
       <main className="pt-16">
         {/* HERO SECTION */}
         <section
-          className="hero-section flex flex-col items-center justify-center text-center py-14 px-4"
+          className="flex flex-col items-center justify-center text-center py-14 px-4"
           aria-labelledby="hero-title"
         >
           <h1
             id="hero-title"
-            className="hero-title text-3xl md:text-5xl font-bold mb-2"
+            className="text-3xl md:text-5xl font-bold mb-2 text-black"
             tabIndex={0}
           >
             Scale profitably with
@@ -102,13 +135,14 @@ export default function Home() {
           </h1>
           <p
             className="mb-6 max-w-xl"
+            style={{ color: COLORS.text }}
             tabIndex={0}
           >
             Improve your ROAS with targeted, high quality ad campaigns managed by
             expert marketers assisted by GoMarble AI
           </p>
           <button
-            className="primary-button"
+            className="rounded-full px-6 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
             aria-label="Get Started with GoMarble"
           >
             Get Started
@@ -119,74 +153,74 @@ export default function Home() {
         <section className="py-16 px-4 relative mb-20">
           <div className="max-w-6xl mx-auto relative">
             {/* ROAS Box */}
-            <div className="metrics-box rounded-xl p-6 w-[350px] relative z-10 ml-[200px]">
+            <div className="bg-[#66DDC7] rounded-xl p-6 w-[350px] relative z-10 border-2 border-black ml-[200px]">
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-teal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#065f46]">
                       <circle cx="12" cy="12" r="4" fill="currentColor" fillOpacity="0.3"/>
                       <circle cx="4" cy="12" r="3" fill="currentColor"/>
                       <circle cx="20" cy="12" r="3" fill="currentColor"/>
                       <circle cx="12" cy="4" r="3" fill="currentColor"/>
                       <circle cx="12" cy="20" r="3" fill="currentColor"/>
                     </svg>
-                    <span className="metrics-text font-medium">ROAS</span>
+                    <span className="text-[#065f46] font-medium">ROAS</span>
                   </div>
-                  <span className="metrics-text flex items-center">
+                  <span className="text-[#065f46] flex items-center">
                     <span className="transform rotate-0">↑</span> 56.4%
                   </span>
                 </div>
               </div>
-              <div className="metrics-value text-6xl font-bold mt-4">5.73</div>
+              <div className="text-6xl font-bold text-[#065f46] mt-4">5.73</div>
               <div className="mt-4">
                 <svg className="w-full" height="40" viewBox="0 0 300 40">
-                  <path d="M0 30 L60 25 L120 28 L180 20 L240 35 L300 15" stroke="#1A8DE1" fill="none" strokeWidth="2"/>
+                  <path d="M0 30 L60 25 L120 28 L180 20 L240 35 L300 15" stroke="#065f46" fill="none" strokeWidth="2"/>
                 </svg>
               </div>
             </div>
 
             {/* Total Profits Box */}
-            <div className="metrics-box rounded-xl p-6 w-[350px] absolute left-[400px] top-[20px] z-20">
+            <div className="bg-[#66DDC7] rounded-xl p-6 w-[350px] absolute left-[400px] top-[20px] z-20 border-2 border-black">
               <div className="flex items-center gap-2">
-                <span className="metrics-text flex items-center gap-2">
+                <span className="text-[#065f46] flex items-center gap-2">
                   <span>💰</span>
                   Total Profits
                 </span>
-                <span className="metrics-text flex items-center">
+                <span className="text-[#065f46] flex items-center">
                   <span className="transform rotate-0">↑</span> 18.4%
                 </span>
               </div>
-              <div className="metrics-value text-6xl font-bold mt-4">$18,563</div>
+              <div className="text-6xl font-bold text-[#065f46] mt-4">$18,563</div>
               <div className="mt-4">
                 <svg className="w-full" height="40" viewBox="0 0 300 40">
-                  <path d="M0 20 L60 15 L120 25 L180 10 L240 30 L300 5" stroke="#1A8DE1" fill="none" strokeWidth="2"/>
+                  <path d="M0 20 L60 15 L120 25 L180 10 L240 30 L300 5" stroke="#065f46" fill="none" strokeWidth="2"/>
                 </svg>
               </div>
             </div>
 
             {/* Save wasted ad spend Box */}
-            <div className="metrics-box rounded-lg px-6 py-3 absolute left-[650px] top-[150px] z-20">
-              <span className="metrics-text">Save wasted ad spend</span>
+            <div className="bg-[#66DDC7] rounded-lg px-6 py-3 absolute left-[650px] top-[150px] z-20 border-2 border-black">
+              <span className="text-[#065f46]">Save wasted ad spend</span>
             </div>
 
             {/* Experts Box */}
-            <div className="metrics-box rounded-xl p-4 w-[180px] absolute left-[700px] top-0 z-30">
-              <h3 className="metrics-text text-sm mb-3">Dedicated Experts for your brand</h3>
+            <div className="bg-[#66DDC7] rounded-xl p-4 w-[180px] absolute left-[700px] top-0 z-30 border-2 border-black">
+              <h3 className="text-[#065f46] text-sm mb-3">Dedicated Experts for your brand</h3>
               <div className="flex justify-center items-center gap-2 mb-3">
                 <img
                   src="https://randomuser.me/api/portraits/women/1.jpg"
                   alt="Team member"
-                  className="w-10 h-10 rounded-full border-2 border-[#0c3655]"
+                  className="w-10 h-10 rounded-full border-2 border-[#66DDC7]"
                 />
                 <img
                   src="https://randomuser.me/api/portraits/men/1.jpg"
                   alt="Team member"
-                  className="w-10 h-10 rounded-full border-2 border-[#0c3655]"
+                  className="w-10 h-10 rounded-full border-2 border-[#66DDC7]"
                 />
                 <img
                   src="https://randomuser.me/api/portraits/women/2.jpg"
                   alt="Team member"
-                  className="w-10 h-10 rounded-full border-2 border-[#0c3655]"
+                  className="w-10 h-10 rounded-full border-2 border-[#66DDC7]"
                 />
               </div>
             </div>
@@ -194,19 +228,19 @@ export default function Home() {
             {/* Additional Info */}
             <div className="absolute bottom-[-80px] left-0 right-0 flex justify-between items-center">
               <div className="flex items-center gap-4">
-                <div className="metrics-box rounded-lg px-6 py-3 absolute left-[350px]">
-                  <span className="metrics-text">Launch new ads every week</span>
+                <div className="bg-[#66DDC7] rounded-lg px-6 py-3 absolute left-[350px]">
+                  <span className="text-[#065f46]">Launch new ads every week</span>
                 </div>
               </div>
               <div className="flex gap-4 absolute left-[650px]">
                 <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center">
-                  <img src="/meta.webp" alt="Meta" className="w-full h-full object-cover" />
+                  <img src="/metaa.png" alt="Meta" className="w-full h-full object-cover" />
                 </div>
                 <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center">
-                  <img src="/google.jpg" alt="Google" className="w-full h-full object-cover" />
+                  <img src="/goog.jpg" alt="Google" className="w-full h-full object-cover" />
                 </div>
                 <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center">
-                  <img src="/amazon.jpg" alt="Amazon" className="w-full h-full object-cover" />
+                  <img src="/ama.jpg" alt="Amazon" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -215,11 +249,11 @@ export default function Home() {
 
         {/* BRAND LOGOS & STATS */}
         <section
-          className="brand-logos-section py-10"
+          className="py-10"
           aria-label="Trusted brands and stats"
         >
           <h2
-            className="text-center text-lg font-medium mb-4"
+            className="text-center text-3xl font-medium mb-4"
             tabIndex={0}
           >
             Trusted by brands across the globe
@@ -230,7 +264,7 @@ export default function Home() {
                 key={logo.src}
                 src={logo.src}
                 alt={`${logo.alt} logo`}
-                className="brand-logo"
+                className="h-16 object-contain"
                 role="listitem"
                 loading="lazy"
               />
@@ -241,33 +275,41 @@ export default function Home() {
             role="list"
           >
             <div role="listitem" aria-label="34 percent CAC Reduction">
-              <div className="metric-value text-2xl font-bold">
+              <div
+                className="text-4xl font-bold text-black"
+              >
                 34%
               </div>
-              <div className="text-sm">CAC Reduction</div>
+              <div className="text-lg text-black">CAC Reduction</div>
             </div>
             <div role="listitem" aria-label="54 percent ROAS Improvement">
-              <div className="metric-value text-2xl font-bold">
+              <div
+                className="text-4xl font-bold text-black"
+              >
                 54%
               </div>
-              <div className="text-sm">ROAS Improvement</div>
+              <div className="text-lg text-black">ROAS Improvement</div>
             </div>
             <div role="listitem" aria-label="4000 plus Ads Generated">
-              <div className="metric-value text-2xl font-bold">
+              <div
+                className="text-4xl font-bold text-black"
+              >
                 4000+
               </div>
-              <div className="text-sm">Ads Generated</div>
+              <div className="text-lg text-black">Ads Generated</div>
             </div>
             <div role="listitem" aria-label="85 percent Faster Creatives">
-              <div className="metric-value text-2xl font-bold">
+              <div
+                className="text-4xl font-bold text-black"
+              >
                 85%
               </div>
-              <div className="text-sm">Faster Creatives</div>
+              <div className="text-lg text-black">Faster Creatives</div>
             </div>
           </div>
           <div className="text-center">
             <button
-              className="primary-button"
+              className="rounded-full px-6 py-2 font-semibold bg-[#66DDC7] text-[#065f46]"
               aria-label="Book a Call with GoMarble"
             >
               Book a Call
@@ -275,48 +317,50 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
+        {/* TESTIMONIALS - Redesigned - Grid Box Background Changed to Accent */}
         <section
           className="py-14 px-4"
           aria-labelledby="testimonials-title"
         >
           <h2
             id="testimonials-title"
-            className="text-center text-2xl font-semibold mb-7"
+            className="text-center text-3xl md:text-4xl font-bold mb-12 text-black"
             tabIndex={0}
           >
             What our customers say
           </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-4 mb-7 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {TESTIMONIALS.map((t, i) => (
               <article
                 key={i}
-                className="testimonial-card flex-1 max-w-xl mx-auto p-8 min-h-[250px] flex flex-row items-center text-left"
+                className="bg-[#66DDC7] rounded-xl shadow-xl p-8 flex flex-col justify-between border border-[#4ac0b3] text-[#065f46]"
                 aria-label={`Testimonial from ${t.name}`}
                 tabIndex={0}
               >
-                <div className="flex-1">
-                  <h3 className="font-medium text-lg mb-3">{t.name}</h3>
-                  <p className="text-base opacity-80 italic">{t.quote}</p>
+                {/* Partner Logo Header */}
+                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-[#065f46]">
+                  <span className="font-semibold text-sm text-[#054d37]">
+                    {i === 0 ? "Alps & Meters Logo" : "Barrister and Mann Logo"}
+                  </span>
+                  <span className="text-[#054d37] text-sm">x</span>
+                  <span className="font-semibold text-sm text-[#054d37]">GoMarble Logo</span>
                 </div>
-                <div className="ml-6">
-                  <img
-                    src={t.avatar}
-                    alt={`${t.name} avatar`}
-                    className="testimonial-avatar w-24 h-24 rounded-full object-cover"
-                    loading="lazy"
-                  />
+                
+                {/* Quote and Author */}
+                <div className="flex flex-col md:flex-row gap-8 flex-grow">
+                  <p className="text-base text-[#054d37] italic flex-grow md:w-2/3">{t.quote}</p>
+                  <div className="flex flex-col items-center text-center flex-shrink-0 md:w-1/3">
+                    <img
+                      src={t.avatar}
+                      alt={`${t.name} avatar`}
+                      className={`w-24 h-24 rounded-lg object-cover mb-4`}
+                      loading="lazy"
+                    />
+                    <h3 className="font-semibold text-sm uppercase tracking-wider text-[#065f46]">{t.name}</h3>
+                  </div>
                 </div>
               </article>
             ))}
-          </div>
-          <div className="text-center">
-            <button
-              className="primary-button"
-              aria-label="Book a Demo with GoMarble"
-            >
-              Book a Demo
-            </button>
           </div>
         </section>
 
@@ -327,7 +371,7 @@ export default function Home() {
             <div className="flex flex-row items-center justify-between gap-8 mb-20">
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-teal h-12 w-12 rounded-full flex items-center justify-center text-2xl font-black text-[#0c3655]">
+                  <div className="h-12 w-12 bg-[#66DDC7] rounded-full flex items-center justify-center text-2xl font-black text-[#0c3655]">
                     1
                   </div>
                   <h2 className="text-3xl font-bold">One-Click Account Audit</h2>
@@ -337,24 +381,24 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex-1">
-                <div className="bg-darkblue rounded-xl p-6 relative">
-                  <div className="text-teal mb-2">$3.5K wasted ad spend detected</div>
+                <div className="relative">
+                  <div className="text-black mb-2">$3.5K wasted ad spend detected</div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-[#13323b] rounded-lg p-4">
+                    <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4">
                       <svg className="w-full" height="40" viewBox="0 0 300 40">
-                        <path d="M0 30 L60 25 L120 28 L180 20 L240 35 L300 15" stroke="#66DDC7" fill="none" strokeWidth="2"/>
+                        <path d="M0 30 L60 25 L120 28 L180 20 L240 35 L300 15" stroke="#065f46" fill="none" strokeWidth="2"/>
                       </svg>
-                      <div className="text-teal text-sm mt-2">Low Creative Velocity</div>
+                      <div className="text-black text-sm mt-2">Low Creative Velocity</div>
                     </div>
-                    <div className="bg-[#13323b] rounded-lg p-4">
+                    <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4">
                       <div className="flex justify-between items-end h-[40px]">
-                        <div className="w-8 bg-[#1A8DE1] h-[60%]"></div>
-                        <div className="w-8 bg-[#1A8DE1] h-[40%]"></div>
+                        <div className="w-8 bg-[#66DDC7] h-[60%]"></div>
+                        <div className="w-8 bg-[#66DDC7] h-[40%]"></div>
                         <div className="w-8 bg-[#66DDC7] h-[100%]"></div>
-                        <div className="w-8 bg-[#1A8DE1] h-[50%]"></div>
-                        <div className="w-8 bg-[#1A8DE1] h-[30%]"></div>
+                        <div className="w-8 bg-[#66DDC7] h-[50%]"></div>
+                        <div className="w-8 bg-[#66DDC7] h-[30%]"></div>
                       </div>
-                      <div className="text-teal text-sm mt-2">Performance Analysis</div>
+                      <div className="text-black text-sm mt-2">Performance Analysis</div>
                     </div>
                   </div>
                 </div>
@@ -365,48 +409,48 @@ export default function Home() {
             <div className="flex flex-row items-center justify-between gap-8 mb-20">
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-teal h-16 w-16 rounded-full flex items-center justify-center text-3xl font-black text-[#0c3655]">
+                  <div className="h-16 w-16 bg-[#66DDC7] rounded-full flex items-center justify-center text-3xl font-black text-[#0c3655]">
                     2
                   </div>
-                  <h2 className="text-4xl font-bold">
+                  <h2 className="text-4xl font-bold text-[#000000]">
                     AI-driven<br />
                     Consumer Research
                   </h2>
                 </div>
-                <p className="text-xl mb-8 max-w-xl leading-relaxed">
+                <p className="text-xl text-[#000000] mb-8 max-w-xl leading-relaxed">
                   We ingest all your online assets in our custom Generative AI Model to generate targeted buyer personas and generate high performing marketing concepts
                 </p>
               </div>
               <div className="flex-1">
-                <div className="bg-darkblue rounded-xl p-6 relative">
+                <div className="relative">
                   <div className="grid gap-4">
-                    <div className="bg-[#13323b] rounded-lg p-4">
+                    <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4">
                       <div className="flex items-start gap-4">
                         <img
                           src="https://randomuser.me/api/portraits/men/32.jpg"
                           alt="User profile"
                           className="w-16 h-16 rounded-lg object-cover"
                         />
-                        <div className="flex-1 bg-[#0c3655] rounded-lg p-3">
+                        <div className="flex-1 bg-sky-100 rounded-lg p-3">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className="text-teal">Zach</span>
-                            <span className="text-teal text-sm">Match: 75%</span>
+                            <span className="text-black">Zach</span>
+                            <span className="text-gray-600 text-sm">Match: 75%</span>
                           </div>
-                          <p className="text-teal text-sm">
+                          <p className="text-gray-700 text-sm">
                             Zach actively seeks ways to incorporate green practices into his life...
                           </p>
                         </div>
                       </div>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-[#13323b] rounded-lg p-4 flex items-center justify-center">
-                        <span className="text-teal">Assets</span>
+                      <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+                        <span className="text-black">Assets</span>
                       </div>
-                      <div className="bg-[#13323b] rounded-lg p-4 flex items-center justify-center">
-                        <span className="text-teal">Brand Kit</span>
+                      <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+                        <span className="text-black">Brand Kit</span>
                       </div>
-                      <div className="bg-[#13323b] rounded-lg p-4 flex items-center justify-center">
-                        <span className="text-teal">Website</span>
+                      <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+                        <span className="text-black">Website</span>
                       </div>
                     </div>
                   </div>
@@ -418,42 +462,42 @@ export default function Home() {
             <div className="flex flex-row items-center justify-between gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-teal h-16 w-16 rounded-full flex items-center justify-center text-3xl font-black text-[#0c3655]">
+                  <div className="h-16 w-16 bg-[#66DDC7] rounded-full flex items-center justify-center text-3xl font-black text-[#0c3655]">
                     3
                   </div>
-                  <h2 className="text-4xl font-bold">
+                  <h2 className="text-4xl font-bold text-[#000000]">
                     Humans + Gen AI for<br />
                     5x faster creatives
                   </h2>
                 </div>
-                <p className="text-xl mb-8 max-w-xl leading-relaxed">
+                <p className="text-xl text-[#000000] mb-8 max-w-xl leading-relaxed">
                   Our designers and copywriters use GoMarble's Generative AI tools to rapidly create, conduct pre-flight tests and launch on all ads
                 </p>
               </div>
               <div className="flex-1">
-                <div className="bg-darkblue rounded-xl p-6 relative">
+                <div className="relative">
                   <div className="grid gap-4">
-                    <div className="bg-[#13323b] rounded-lg p-4">
+                    <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg p-4">
                       <div className="flex flex-col gap-2">
-                        <div className="text-teal text-sm">Concept: Thick Lather</div>
+                        <div className="text-black text-sm">Concept: Thick Lather</div>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="relative">
                             <img
-                              src="/butter-up-1.jpg"
+                              src="https://picsum.photos/seed/butterup2/400/300"
                               alt="Butter up product"
                               className="w-full h-32 object-cover rounded-lg"
                             />
-                            <button className="absolute bottom-2 right-2 bg-[#0c3655] text-teal px-3 py-1 rounded text-sm">
+                            <button className="absolute bottom-2 right-2 bg-[#0c3655] text-[#66DDC7] px-3 py-1 rounded text-sm">
                               Buy Now
                             </button>
                           </div>
                           <div className="relative">
                             <img
-                              src="/butter-up-2.jpg"
+                              src="https://picsum.photos/seed/butterup1/400/300"
                               alt="Butter up product"
                               className="w-full h-32 object-cover rounded-lg"
                             />
-                            <button className="absolute bottom-2 right-2 bg-[#0c3655] text-teal px-3 py-1 rounded text-sm">
+                            <button className="absolute bottom-2 right-2 bg-[#0c3655] text-[#66DDC7] px-3 py-1 rounded text-sm">
                               Buy Now
                             </button>
                           </div>
@@ -461,168 +505,203 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <div className="bg-[#13323b] rounded-lg px-4 py-2 flex items-center gap-2">
-                        <span className="text-teal">👨‍🎨</span>
-                        <span className="text-teal text-sm">Human Graphic Designers</span>
+                      <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg px-4 py-2 flex items-center gap-2">
+                        <span className="text-black">👨‍🎨</span>
+                        <span className="text-black text-sm">Human Graphic Designers</span>
                       </div>
-                      <div className="bg-[#13323b] rounded-lg px-4 py-2 flex items-center gap-2">
-                        <span className="text-teal">✍️</span>
-                        <span className="text-teal text-sm">Human Copywriters</span>
+                      <div className="bg-[#e0f2fe] border border-gray-300 rounded-lg px-4 py-2 flex items-center gap-2">
+                        <span className="text-black">✍️</span>
+                        <span className="text-black text-sm">Human Copywriters</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Omni-Channel Ads - NEW SECTION - Reordered & Background Removed from Main */}
+            <div className="flex flex-row items-center justify-between gap-12 my-12">
+              {/* Left Column: Text Content (No background box) */}
+              <div className="flex-1">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-16 w-16 bg-[#66DDC7] rounded-full flex items-center justify-center text-3xl font-black text-[#065f46]">
+                    4
+                  </div>
+                  {/* Text color needs to be reset if it was white before */}
+                  <h2 className="text-4xl font-bold text-[#000000]">Omni-Channel Ads</h2>
+                </div>
+                 {/* Text color needs to be reset if it was white/gray before */}
+                <p className="text-xl text-[#000000] mb-8 max-w-md leading-relaxed">
+                  GoMarble AI Platform enables our experts to run ads on all major marketing channels.
+                </p>
+                <div className="flex gap-4">
+                   {/* Using direct img tags for logos */}
+                   <img src="/meta.webp" alt="Meta" className="w-8 h-8 object-contain rounded-full" />
+                   <img src="/google.jpg" alt="Google" className="w-8 h-8 object-contain rounded-full" />
+                   <img src="/amazon.jpg" alt="Amazon" className="w-8 h-8 object-contain rounded-full" />
+                </div>
+              </div>
+
+              {/* Right Column: Ad Previews (Removed background box) */}
+              <div className="flex-1">
+                <div className="flex flex-col items-center relative"> {/* This inner div holds the column - still centered by flex-1 parent */}
+                  {/* Row for first two images */}
+                  <div className="flex justify-center gap-4 mb-1 w-full"> {/* Added flex row container */}
+                    {/* Image 1 (IG) */}
+                    <div className="relative w-2/5"> {/* Adjusted width, removed mb-1 */}
+                      <img
+                        src="/shaving cream.jpg"
+                        alt="Ad preview Instagram"
+                        className="w-48 h-36 object-cover rounded-lg shadow-lg mx-auto" /* Increased width to w-32 */
+                      />
+                      <img src="/instagram.jpg" alt="Instagram" className="absolute top-2 right-2 h-6 w-6 object-contain bg-white rounded-full p-1" />
+                      <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white text-[#042f2e] px-2 py-0.5 rounded text-xs font-semibold">
+                        BUY NOW
+                      </button>
+                    </div>
+                    {/* Image 2 (FB) */}
+                    <div className="relative w-2/5"> {/* Adjusted width, removed ml-8, removed mb-1 */}
+                      <img
+                        src="/shaving cream.jpg"
+                        alt="Ad preview Facebook"
+                        className="w-48 h-24 object-cover rounded-lg shadow-lg mx-auto" /* Increased width to w-32 */
+                      />
+                      <img src="/facebook.png" alt="Facebook" className="absolute top-2 right-2 h-6 w-6 object-contain bg-white rounded-full p-1" />
+                      {/* Moved Publish All button here - Adjusted size */}
+                      <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-[#66DDC7] text-[#042f2e] rounded px-2 py-0.5 text-xs font-semibold">
+                        Publish All
+                      </button>
+                      {/* Moved Facebook BUY NOW button back here - Moved up again */}
+                      <button className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-white text-[#042f2e] px-2 py-0.5 rounded text-xs font-semibold">
+                        BUY NOW
+                      </button>
+                    </div>
+                  </div>
+                  {/* Image 3 (YT) */}
+                  <div className="relative mb-1 w-4/5"> {/* Kept width as it's on its own row */}
+                    <img
+                      src="/shaving cream.jpg"
+                      alt="Ad preview YouTube"
+                      className="w-64 h-24 object-cover rounded-lg shadow-lg mx-auto" /* Increased width to w-48 */
+                    />
+                    <img src="/youtube.png" alt="YouTube" className="absolute top-2 right-10 h-6 w-6 object-contain bg-white rounded-full p-1" /> {/* Changed right-8 to right-10 */}
+                    <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white text-[#042f2e] px-2 py-0.5 rounded text-xs font-semibold">
+                      BUY NOW
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* End of Omni-Channel Ads Section */}
+
           </div>
         </section>
 
-        {/* Rest of the features */}
-        <section className="py-14 px-4">
-          <ol className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {features.map((f, i) => (
-              <li
-                key={i}
-                className="feature-card flex items-start gap-5 p-6"
-                tabIndex={0}
-              >
-                <div className="flex-shrink-0 mt-2" aria-hidden="true">
-                  <div className="feature-number h-8 w-8 rounded-full flex items-center justify-center text-lg font-black">
-                    {i + 1}
-                  </div>
-                  <img
-                    src={f.img}
-                    alt={f.title}
-                    className="my-4 w-20 h-20 object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-[#454c53] text-base mb-1">
-                    {f.title}
-                  </h4>
-                  <p className="text-sm opacity-80 text-[#454c53]">{f.desc}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* GROWTH + ALGORITHM SECTION */}
+        {/* GROWTH + ALGORITHM SECTION - Redesigned - Background Changed */}
         <section
-          className="growth-section py-14 px-4"
-          aria-labelledby="growth-algorithm-title"
+          className="py-16 px-4 text-center"
+          aria-labelledby="agency-leverage-ai-title"
         >
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto">
             <h2
-              id="growth-algorithm-title"
-              className="text-2xl font-bold mb-3"
+              id="agency-leverage-ai-title"
+              className="text-4xl md:text-5xl font-bold mb-6 text-black"
               tabIndex={0}
             >
-              Scale growth
-              <br />
-              Human + Algorithm
+              Is your current Agency leveraging AI?
             </h2>
-            <p className="mb-4" tabIndex={0}>
-              Our AI algorithms assist your performance. Bundled and target
-              profitability, backed by experts.
+            <p className="mb-8 text-lg text-gray-700 max-w-2xl mx-auto" tabIndex={0}>
+              Improve ROAS and bring down your marketing costs with AI-Assisted Performance Marketing
             </p>
-            <img
-              src="https://ext.same-assets.com/1796335204/3094497045.svg"
-              alt="Algorithm illustration"
-              className="mx-auto mb-7"
-              style={{ maxWidth: 120 }}
-              loading="lazy"
-            />
-            <div>
-              <h3 className="font-semibold mb-2" tabIndex={0}>
-                Is your current Agency leveraging AI?
-              </h3>
-              <p className="text-sm mb-4" tabIndex={0}>
-                Improve ROAS and bring down your marketing costs with AI-Assisted
-                Performance Marketing
-              </p>
-              <button
-                className="primary-button"
-                aria-label="Hire GoMarble"
-              >
-                Hire GoMarble
-              </button>
-            </div>
+            <button
+              className="rounded-full px-8 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
+              aria-label="Hire GoMarble"
+            >
+              Hire GoMarble
+            </button>
           </div>
         </section>
 
-        {/* METRICS SECTION */}
+        {/* METRICS SECTION - Redesigned - Grid Box Background Changed to Accent */}
         <section
-          className="py-10"
+          className="py-16 px-4 text-center"
           aria-label="Performance metrics"
         >
-          <div className="flex flex-wrap justify-center gap-6 text-center">
-            <div
-              className="metric-card px-8 py-5 min-w-[200px]"
-              tabIndex={0}
-              aria-label="Blended ROAS last 90 days 3.73"
-            >
-              <div className="metric-value text-2xl font-bold mb-2">
-                3.73
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-[#000000] max-w-3xl mx-auto">
+            Specialised for brands with strong product-market-fit but limited growth fuel
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+            {/* Metric Box 1 */}
+            <div className="bg-[#66DDC7] text-[#065f46] rounded-lg p-6 text-left border border-[#4ac0b3] shadow-md">
+              <h3 className="text-sm text-[#054d37] mb-2">Home Decor</h3>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="text-4xl font-bold">3.73</span>
+                <span className="text-[#065f46] font-semibold">191%</span>
               </div>
-              <div className="text-sm text-gray-600">
-                Blended ROAS (last 90 days)
-              </div>
+              <p className="text-sm text-[#054d37]">
+                ROAS Improved from 1.95 to 3.73 in 45 days
+              </p>
             </div>
-            <div
-              className="metric-card px-8 py-5 min-w-[200px]"
-              tabIndex={0}
-              aria-label="Average revenue in 30 days top quartile 34 thousand dollars"
-            >
-              <div className="metric-value text-2xl font-bold mb-2">
-                $34K
+            
+            {/* Metric Box 2 */}
+            <div className="bg-[#66DDC7] text-[#065f46] rounded-lg p-6 text-left border border-[#4ac0b3] shadow-md">
+              <h3 className="text-sm text-[#054d37] mb-2">Jewellery Brand</h3>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="text-4xl font-bold">$34K</span>
+                <span className="text-[#065f46] font-semibold">124%</span>
               </div>
-              <div className="text-sm text-gray-600">
-                Avg. revenue in 30d (top quartile)
-              </div>
+              <p className="text-sm text-[#054d37]">
+                Sales grew from $15K/Month to $34K/Month in 90 days
+              </p>
             </div>
-            <div
-              className="metric-card px-8 py-5 min-w-[200px]"
-              tabIndex={0}
-              aria-label="Average time to first winning creative 3 days"
-            >
-              <div className="metric-value text-2xl font-bold mb-2">
-                3 days
+
+            {/* Metric Box 3 */}
+            <div className="bg-[#66DDC7] text-[#065f46] rounded-lg p-6 text-left border border-[#4ac0b3] shadow-md">
+              <h3 className="text-sm text-[#054d37] mb-2">Global Expansion</h3>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="text-4xl font-bold">3 days</span>
               </div>
-              <div className="text-sm text-gray-600">
-                Avg. time to first winning creative
-              </div>
+              <p className="text-sm text-[#054d37]">
+                TAT for localised creatives for EU expansion of a US Brand
+              </p>
             </div>
-            <div
-              className="metric-card px-8 py-5 min-w-[200px]"
-              tabIndex={0}
-              aria-label="Lowest monthly ad spend 13.5 thousand dollars"
-            >
-              <div className="metric-value text-2xl font-bold mb-2">
-                $13.5K
+
+            {/* Metric Box 4 */}
+            <div className="bg-[#66DDC7] text-[#065f46] rounded-lg p-6 text-left border border-[#4ac0b3] shadow-md">
+              <h3 className="text-sm text-[#054d37] mb-2">Beauty Brand</h3>
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="text-4xl font-bold">$13.5K</span>
               </div>
-              <div className="text-sm text-gray-600">
-                Lowest monthly ad spend
-              </div>
+              <p className="text-sm text-[#054d37]">
+                Identified and saved wasted monthly ad spend of $13.5K
+              </p>
             </div>
+          </div>
+          
+          {/* Talk to Us Link */}
+          <div className="text-xl text-[#000000]">
+            Not sure if you fit? 
+            <a href="#" className="text-black font-semibold hover:underline">
+              Talk to Us
+              <PhoneIcon />
+            </a>
           </div>
         </section>
 
-        {/* FINAL CTA */}
+        {/* FINAL CTA - Background Changed */}
         <section
           className="py-16 px-4 text-center"
           aria-labelledby="final-cta-title"
         >
           <h2
             id="final-cta-title"
-            className="text-2xl font-bold mb-4"
+            className="text-4xl font-bold mb-6 text-black"
             tabIndex={0}
           >
             Ready to unlock your next growth lever?
           </h2>
           <button
-            className="primary-button"
+            className="rounded-full px-8 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
             aria-label="Book a call to unlock growth"
           >
             Book a Call
@@ -630,65 +709,73 @@ export default function Home() {
         </section>
       </main>
 
-      {/* FOOTER */}
+      {/* FOOTER - Background Changed */}
       <footer
-        className="footer pt-10 pb-4 px-4"
+        className="pt-16 px-4 text-black"
         role="contentinfo"
       >
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center max-w-5xl mx-auto mb-7">
-          <div className="flex items-center mb-5 md:mb-0">
+        <div className="max-w-6xl mx-auto">
+          {/* Footer Logo and Tagline - Centered */}
+          <div className="flex flex-col items-center mb-10">
             <img
-              src="https://ext.same-assets.com/1796335204/3966176097.png"
+              src="/logo.webp"
               alt="GoMarble Logo Footer"
-              className="h-7 w-7 mr-2"
+              className="h-14 w-14 mb-4"
             />
-            <span className="text-lg font-bold" tabIndex={0}>
-              GoMarble
-            </span>
+            <div className="text-center">
+              <div className="text-2xl font-bold mb-2">GoMarble</div>
+              <div className="text-gray-700">AI-Assisted Performance Marketing Experts</div>
+            </div>
           </div>
-          <nav
-            className="flex flex-wrap gap-5 text-sm"
-            aria-label="Footer navigation"
-          >
-            <a href="#" className="footer-link">
-              Home
-            </a>
-            <a href="#" className="footer-link">
-              Blog
-            </a>
-            <a href="#" className="footer-link">
-              Instagram
-            </a>
-            <a href="#" className="footer-link">
-              YouTube
-            </a>
-            <a href="#" className="footer-link">
-              LinkedIn
-            </a>
-            <span className="mx-2" aria-hidden="true">
-              |
-            </span>
-            <span className="opacity-70" tabIndex={0}>
-              Free Tools:
-            </span>
-            <a href="#" className="footer-link">
-              Meta Ads Grader
-            </a>
-            <a href="#" className="footer-link">
-              AI Ads Analyzer
-            </a>
-            <a href="#" className="footer-link ml-1 bg-accent text-background rounded px-1 text-xs">
-              AI Copywriter{" "}
-              <span className="ml-1 bg-[#57bbbb] text-[#04242a] rounded px-1 text-xs">
-                Free
-              </span>
-            </a>
-          </nav>
+          
+          {/* Footer Links in Three Columns - Increased padding again */}
+          <div className="grid md:grid-cols-3 gap-10 mb-12 pl-24">
+            {/* Company Links */}
+            <div>
+              <h3 className="text-lg font-medium mb-4 text-gray-500">COMPANY</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="hover:text-blue-600 transition-colors">Home</a></li>
+                <li><a href="#" className="hover:text-blue-600 transition-colors">Blog</a></li>
+              </ul>
+            </div>
+            
+            {/* Social Links */}
+            <div>
+              <h3 className="text-lg font-medium mb-4 text-gray-500">SOCIALS</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="hover:text-blue-600 transition-colors">Youtube</a></li>
+                <li><a href="#" className="hover:text-blue-600 transition-colors">LinkedIn</a></li>
+                <li><a href="#" className="hover:text-blue-600 transition-colors">Instagram</a></li>
+              </ul>
+            </div>
+            
+            {/* Free Tools */}
+            <div>
+              <h3 className="text-lg font-medium mb-4 text-gray-500">FREE TOOLS</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="hover:text-blue-600 transition-colors">Meta Ads Grader</a></li>
+                <li><a href="#" className="hover:text-blue-600 transition-colors">AI Ads Analyzer</a></li>
+                <li>
+                  <a href="#" className="hover:text-blue-600 transition-colors flex items-center">
+                    AI Copywriter
+                    <span className="ml-2 text-black bg-transparent rounded px-2 py-0.5 text-xs border border-black">New</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="text-center text-xs opacity-70" tabIndex={0}>
-          Copyright © GoMarble.ai 2024
+        {/* Copyright and Legal - Added Dark Green Background - This div is now outside the max-w-6xl container */}
+        <div className="bg-[#065f46] text-gray-300 py-4 px-4 mt-12">
+           <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between">
+              <div className="mb-4 md:mb-0 text-center md:text-left">Copyright © GoMarble AI 2024</div> 
+              <div className="flex gap-6 justify-center md:justify-start">
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a> 
+                <a href="#" className="hover:text-white transition-colors">Terms of Use</a> 
+              </div>
+           </div>
         </div>
       </footer>
     </div>
   );
-} 
+}
