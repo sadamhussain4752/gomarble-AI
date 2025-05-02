@@ -20,14 +20,16 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <img
-              src="/logo.webp"
-              alt="GoMarble Logo"
-              className="h-10 w-10 mr-3"
-            />
-            <span className="text-2xl font-bold" tabIndex={0}>
-              GoMarble
-            </span>
+            <a href="/" className="flex items-center focus:outline-none">
+              <img
+                src="/logo.webp"
+                alt="GoMarble Logo"
+                className="h-10 w-10 mr-3"
+              />
+              <span className="text-2xl font-bold" tabIndex={0}>
+                GoMarble
+              </span>
+            </a>
           </div>
           <nav className="flex items-center space-x-6">
             <a

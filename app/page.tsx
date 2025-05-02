@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Header from "../components/Header";
 
 // Brand color palette
@@ -112,12 +113,73 @@ const PhoneIcon = () => (
 );
 
 export default function App() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div
       className="min-h-screen text-black bg-sky-200"
       aria-label="GoMarble.ai Homepage"
     >
       <Header />
+      {/* Modal Overlay and Content */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="relative bg-[#073135] rounded-2xl shadow-2xl flex flex-row w-full max-w-3xl mx-4 p-0 overflow-hidden min-h-[480px]">
+            {/* Close Button */}
+            <button onClick={() => setShowModal(false)} className="absolute top-4 right-4 text-[#66DDC7] text-2xl font-bold hover:text-[#AFFFFA]">&times;</button>
+            {/* Form */}
+            <form className="w-1/2 flex flex-col gap-4 px-8 py-10 justify-center">
+              <div className="flex gap-3 mb-2">
+                <div className="flex flex-col w-1/2">
+                  <label className="text-[#AFFFFA] text-base font-semibold mb-1">First Name</label>
+                  <input type="text" placeholder="Jane" className="bg-[#0a2329] text-white placeholder-gray-400 rounded px-4 py-3 text-base focus:outline-none" />
+                </div>
+                <div className="flex flex-col w-1/2">
+                  <label className="text-[#AFFFFA] text-base font-semibold mb-1">Last Name</label>
+                  <input type="text" placeholder="Smith" className="bg-[#0a2329] text-white placeholder-gray-400 rounded px-4 py-3 text-base focus:outline-none" />
+                </div>
+              </div>
+              <div className="flex flex-col mb-2">
+                <label className="text-[#AFFFFA] text-base font-semibold mb-1">Email</label>
+                <input type="email" placeholder="jane@framer.com" className="bg-[#0a2329] text-white placeholder-gray-400 rounded px-4 py-3 text-base focus:outline-none" />
+              </div>
+              <div className="flex flex-col mb-2">
+                <label className="text-[#AFFFFA] text-base font-semibold mb-1">Company Website</label>
+                <input type="text" placeholder="www.brandname.com" className="bg-[#0a2329] text-white placeholder-gray-400 rounded px-4 py-3 text-base focus:outline-none" />
+              </div>
+              <div className="flex flex-col mb-2">
+                <label className="text-[#AFFFFA] text-base font-semibold mb-1">Monthly Ad Budget</label>
+                <select className="bg-[#0a2329] text-white placeholder-gray-400 rounded px-4 py-3 text-base focus:outline-none">
+                  <option value="">Select...</option>
+                  <option value="<5k">Less than $5,000</option>
+                  <option value="5k-20k">$5,000 - $20,000</option>
+                  <option value="20k-50k">$20,000 - $50,000</option>
+                  <option value=">50k">More than $50,000</option>
+                </select>
+              </div>
+              <button type="submit" className="mt-4 bg-[#066d5f] text-[#AFFFFA] font-semibold rounded px-4 py-3 text-lg hover:bg-[#66DDC7] hover:text-[#0a2329] transition">Submit</button>
+            </form>
+            {/* Testimonial Card */}
+            <div className="w-1/2 flex flex-col justify-center items-center bg-[#0a2329] px-8 py-10">
+              <span className="text-[#AFFFFA] text-base font-semibold mb-4 self-start">Here is what our partners say</span>
+              <div className="bg-[#073135] rounded-xl p-6 w-full max-w-xs flex flex-col items-start shadow-lg">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="font-bold text-[#66DDC7] text-lg tracking-widest">BARRISTER AND MANN</span>
+                  <span className="text-[#66DDC7] text-xl font-bold">x</span>
+                  <span className="font-bold text-[#66DDC7] text-lg tracking-widest">GoMarble</span>
+                </div>
+                <div className="flex items-center gap-3 mb-2">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop" alt="Will Carius" className="w-14 h-14 rounded-lg object-cover" />
+                  <div className="text-left">
+                    <div className="text-[#AFFFFA] font-bold text-base leading-tight">WILL CARIUS,</div>
+                    <div className="text-[#AFFFFA] font-bold text-base leading-tight">FOUNDER</div>
+                  </div>
+                </div>
+                <p className="text-[#AFFFFA] text-base leading-relaxed mt-2">“I'm incredibly pleased with the results. I've worked with multiple agencies, but only GoMarble has delivered profitable outcomes for Barrister and Mann, and they did it at a fraction of the cost!”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <main className="pt-16">
         {/* HERO SECTION */}
         <section
@@ -142,8 +204,9 @@ export default function App() {
             expert marketers assisted by GoMarble AI
           </p>
           <button
-            className="rounded-full px-6 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
+            className="rounded-full px-6 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-white"
             aria-label="Get Started with GoMarble"
+            onClick={() => setShowModal(true)}
           >
             Get Started
           </button>
@@ -311,6 +374,7 @@ export default function App() {
             <button
               className="rounded-full px-6 py-2 font-semibold bg-[#66DDC7] text-[#065f46]"
               aria-label="Book a Call with GoMarble"
+              onClick={() => setShowModal(true)}
             >
               Book a Call
             </button>
@@ -616,6 +680,7 @@ export default function App() {
             <button
               className="rounded-full px-8 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
               aria-label="Hire GoMarble"
+              onClick={() => setShowModal(true)}
             >
               Hire GoMarble
             </button>
@@ -703,6 +768,7 @@ export default function App() {
           <button
             className="rounded-full px-8 py-3 text-lg font-semibold shadow-md bg-[#66DDC7] text-[#065f46]"
             aria-label="Book a call to unlock growth"
+            onClick={() => setShowModal(true)}
           >
             Book a Call
           </button>
@@ -734,8 +800,8 @@ export default function App() {
             <div>
               <h3 className="text-lg font-medium mb-4 text-gray-500">COMPANY</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="hover:text-blue-600 transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-blue-600 transition-colors">Blog</a></li>
+                <li><a href="/" className="hover:text-blue-600 transition-colors">Home</a></li>
+                <li><a href="/blog" className="hover:text-blue-600 transition-colors">Blog</a></li>
               </ul>
             </div>
             
