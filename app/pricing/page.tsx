@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // SVG icon components
 const DollarIcon = () => (
@@ -103,65 +103,7 @@ const includedFeatures = [
   ],
 ];
 
-type ComparisonRow = {
-  item: string;
-  competitor: string;
-  gomarble: string;
-};
-
-type ComparisonData = {
-  inHouse: ComparisonRow[];
-  legacy: ComparisonRow[];
-  freelancer: ComparisonRow[];
-};
-
-type TabType = 'inHouse' | 'legacy' | 'freelancer';
-
-const comparisonData: ComparisonData = {
-  inHouse: [
-    { item: 'Media Buyer', competitor: '$40/hr', gomarble: 'Included' },
-    { item: 'Graphic Designer', competitor: '$20/hr', gomarble: 'Included' },
-    { item: 'Video Editor', competitor: '$30/hr', gomarble: 'Included' },
-    { item: 'Copywriter', competitor: '$20/hr', gomarble: 'Included' },
-    { item: 'Software Costs', competitor: '$200 / Mo', gomarble: 'Included' },
-    { item: 'Creative Velocity', competitor: '1-2 Concepts per Month', gomarble: '10-15 Concepts per Month' },
-    { item: 'Creative Testing', competitor: 'Sporadic', gomarble: 'Hypothesis driven concept testing' },
-    { item: 'Time to onboard', competitor: '6 months', gomarble: '&lt; 1 day' },
-    { item: 'Advertising Channels', competitor: '1-2 Channels', gomarble: 'Google, Meta, Amazon' },
-    { item: 'Ads Effectiveness', competitor: 'Limited by experience of hires', gomarble: 'Industry Best Practices + AI Optimized' },
-    { item: 'Total Cost', competitor: '$20,000 / Mo', gomarble: '$1499 / Mo' }
-  ],
-  legacy: [
-    { item: 'Media Buyer', competitor: '$60/hr', gomarble: 'Included' },
-    { item: 'Graphic Designer', competitor: '$40/hr', gomarble: 'Included' },
-    { item: 'Video Editor', competitor: '$50/hr', gomarble: 'Included' },
-    { item: 'Copywriter', competitor: '$35/hr', gomarble: 'Included' },
-    { item: 'Software Costs', competitor: '$500 / Mo', gomarble: 'Included' },
-    { item: 'Creative Velocity', competitor: '3-4 Concepts per Month', gomarble: '10-15 Concepts per Month' },
-    { item: 'Creative Testing', competitor: 'Monthly', gomarble: 'Hypothesis driven concept testing' },
-    { item: 'Time to onboard', competitor: '3 months', gomarble: '&lt; 1 day' },
-    { item: 'Advertising Channels', competitor: '2-3 Channels', gomarble: 'Google, Meta, Amazon' },
-    { item: 'Ads Effectiveness', competitor: 'Traditional methods', gomarble: 'Industry Best Practices + AI Optimized' },
-    { item: 'Total Cost', competitor: '$25,000 / Mo', gomarble: '$1499 / Mo' }
-  ],
-  freelancer: [
-    { item: 'Media Buyer', competitor: '$25/hr', gomarble: 'Included' },
-    { item: 'Graphic Designer', competitor: '$15/hr', gomarble: 'Included' },
-    { item: 'Video Editor', competitor: '$20/hr', gomarble: 'Included' },
-    { item: 'Copywriter', competitor: '$15/hr', gomarble: 'Included' },
-    { item: 'Software Costs', competitor: '$100 / Mo', gomarble: 'Included' },
-    { item: 'Creative Velocity', competitor: '1 Concept per Month', gomarble: '10-15 Concepts per Month' },
-    { item: 'Creative Testing', competitor: 'Limited', gomarble: 'Hypothesis driven concept testing' },
-    { item: 'Time to onboard', competitor: '2 weeks', gomarble: '&lt; 1 day' },
-    { item: 'Advertising Channels', competitor: '1 Channel', gomarble: 'Google, Meta, Amazon' },
-    { item: 'Ads Effectiveness', competitor: 'Individual expertise', gomarble: 'Industry Best Practices + AI Optimized' },
-    { item: 'Total Cost', competitor: '$8,000 / Mo', gomarble: '$1499 / Mo' }
-  ]
-};
-
 export default function PricingPage() {
-  const [activeTab, setActiveTab] = useState<TabType>('inHouse');
-
   return (
     <main className="min-h-screen bg-[#0a2329] pt-24 pb-16 px-4 flex flex-col items-center overflow-x-hidden">
       <h1 className="text-4xl md:text-5xl font-bold text-[#AFFFFA] text-center mb-4">
@@ -253,36 +195,9 @@ export default function PricingPage() {
         <p className="text-xl text-[#66DDC7] text-center mb-8">How do we compare with other alternatives</p>
         {/* Tabs */}
         <div className="flex justify-center gap-4 mb-6">
-          <button 
-            onClick={() => setActiveTab('inHouse')}
-            className={`px-6 py-2 rounded-full font-semibold border-2 border-[#1a8de1] transition-all duration-300 ${
-              activeTab === 'inHouse' 
-                ? 'bg-[#0c3655] text-[#AFFFFA] shadow-inner' 
-                : 'bg-transparent text-[#66DDC7] hover:bg-[#0c3655] hover:text-[#AFFFFA]'
-            }`}
-          >
-            In House Teams
-          </button>
-          <button 
-            onClick={() => setActiveTab('legacy')}
-            className={`px-6 py-2 rounded-full font-semibold border-2 border-[#1a8de1] transition-all duration-300 ${
-              activeTab === 'legacy' 
-                ? 'bg-[#0c3655] text-[#AFFFFA] shadow-inner' 
-                : 'bg-transparent text-[#66DDC7] hover:bg-[#0c3655] hover:text-[#AFFFFA]'
-            }`}
-          >
-            Legacy Agency
-          </button>
-          <button 
-            onClick={() => setActiveTab('freelancer')}
-            className={`px-6 py-2 rounded-full font-semibold border-2 border-[#1a8de1] transition-all duration-300 ${
-              activeTab === 'freelancer' 
-                ? 'bg-[#0c3655] text-[#AFFFFA] shadow-inner' 
-                : 'bg-transparent text-[#66DDC7] hover:bg-[#0c3655] hover:text-[#AFFFFA]'
-            }`}
-          >
-            Freelancer
-          </button>
+          <button className="px-6 py-2 rounded-full bg-[#0c3655] text-[#AFFFFA] font-semibold shadow-inner border-2 border-[#1a8de1]">In House Teams</button>
+          <button className="px-6 py-2 rounded-full bg-transparent text-[#66DDC7] font-semibold border-2 border-[#1a8de1]">Legacy Agency</button>
+          <button className="px-6 py-2 rounded-full bg-transparent text-[#66DDC7] font-semibold border-2 border-[#1a8de1]">Freelancer</button>
         </div>
         {/* Table */}
         <div className="w-full max-w-4xl overflow-x-auto">
@@ -290,20 +205,17 @@ export default function PricingPage() {
             <thead>
               <tr className="bg-[#0c3655] text-[#AFFFFA]">
                 <th className="py-3 px-4 font-semibold">Items</th>
-                <th className="py-3 px-4 font-semibold">
-                  {activeTab === 'inHouse' ? 'In-House Team' : activeTab === 'legacy' ? 'Legacy Agency' : 'Freelancer'}
-                </th>
+                <th className="py-3 px-4 font-semibold">In-House Team</th>
                 <th className="py-3 px-4 font-semibold">GoMarble</th>
               </tr>
             </thead>
             <tbody className="text-[#66DDC7] text-lg">
-              {comparisonData[activeTab].map((row, index) => (
-                <tr key={row.item} className={index < comparisonData[activeTab].length - 1 ? 'border-b border-[#1a8de1]/30' : ''}>
-                  <td className="py-3 px-4">{row.item}</td>
-                  <td className="py-3 px-4">{row.competitor}</td>
-                  <td className="py-3 px-4" dangerouslySetInnerHTML={{ __html: row.gomarble }}></td>
-                </tr>
-              ))}
+              <tr className="border-b border-[#1a8de1]/30"><td className="py-3 px-4">Media Buyer</td><td className="py-3 px-4">$40/hr</td><td className="py-3 px-4">Included</td></tr>
+              <tr className="border-b border-[#1a8de1]/30"><td className="py-3 px-4">Graphic Designer</td><td className="py-3 px-4">$20/hr</td><td className="py-3 px-4">Included</td></tr>
+              <tr className="border-b border-[#1a8de1]/30"><td className="py-3 px-4">Video Editor</td><td className="py-3 px-4">$30/hr</td><td className="py-3 px-4">Included</td></tr>
+              <tr className="border-b border-[#1a8de1]/30"><td className="py-3 px-4">Copywriter</td><td className="py-3 px-4">$20/hr</td><td className="py-3 px-4">Included</td></tr>
+              <tr className="border-b border-[#1a8de1]/30"><td className="py-3 px-4">Software Costs</td><td className="py-3 px-4">$200 / Mo</td><td className="py-3 px-4">Included</td></tr>
+              <tr><td className="py-3 px-4">Strategy &amp; Reporting</td><td className="py-3 px-4">$1000 / Mo</td><td className="py-3 px-4">Included</td></tr>
             </tbody>
           </table>
         </div>
